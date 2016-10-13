@@ -5,7 +5,7 @@ var path = require('path');
 var port=process.env.PORT||8080;
 // app.set('views', path.join(__dirname, '../view'));
 // app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, "../view")));
+app.use(express.static(path.join(__dirname, "view")));
 // app.get('/', express.static(path.join(__dirname, "view")));
 // app.get('/',function(req,res){
     // res.send('hello!!!');
