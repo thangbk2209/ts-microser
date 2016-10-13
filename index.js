@@ -3,8 +3,8 @@ var app=express();
 var http=require("http");
 var port=process.env.PORT||8080;
 app.get('/',function(req,res){
-   // res.send('hello!!!');
-    app.use(express.static("view"));
+    res.send('hello!!!');
+   // app.use(express.static("view"));
    // res.sendFile('view/index.html');
 })
 app.get('/:dateString',function(req,res){
