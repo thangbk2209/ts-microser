@@ -1,13 +1,18 @@
 var express=require("express");
 var app=express();
 var http=require("http");
+var path = require('path');
 var port=process.env.PORT||8080;
-    app.use(express.static("view"));
-app.get('/',function(req,res){
-    res.send('hello!!!');
+// app.set('views', path.join(__dirname, '../view'));
+// app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, "../view")));
+// app.get('/', express.static(path.join(__dirname, "view")));
+// app.get('/',function(req,res){
+    // res.send('hello!!!');
+    // res.render('index');
 
-   // res.sendFile('view/index.html');
-})
+  // res.sendFile('view/index.html');
+// })
 app.get('/:dateString',function(req,res){
         var myDate=req.params.dateString;
         var unix=null;
