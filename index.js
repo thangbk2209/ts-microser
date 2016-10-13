@@ -17,11 +17,10 @@ app.get('/:dateString',function(req,res){
         var myDate=req.params.dateString;
         var unix=null;
         var natural=null;
-        if(myDate.isNaN==="true"){
-            if(/^\d{8,}$/.test(myDate)) {
-                unix=myDate.format("X");
-                natural=unixToNat(unix);
-             }
+        if(isNaN(myDate)){
+                natural=myDate;
+                var time=convertNat(myDate);
+                unix=natToUnix(myDate);
         }
          else{
              unix=myDate;
@@ -39,8 +38,25 @@ app.get('/:dateString',function(req,res){
         var kq=month+' '+date+','+' '+year;
         return kq;
     }
+    function convertNat(nat){
+        var na="December 15, 2015";
+        var nat=na.split(" ");
+        console.log(nat);
+        var months={"Juanuary":"1", "February":"2", "March":"3", "April":"4", "May":"5", "June":"6", "july":"7", "August":"8", "September":"9", "October":"10", "November":"11", "December":"12"};
+        console.log(months);
+        var mm=12;
+        console.log(mm);
+        console.log(nat[1]);
+        var dleng=nat[1].length;
+        var dd=nat[1].slice(0,dleng-1);
+        console.log(nat);
+        console.log(dleng);
+        var natural=nat[2]+"."+mm+"."+dd;
+        console.log(natural);
+        return natural;
+    }
     function natToUnix(nat){
-        var unixtime=Date.parse(nat).getTime()/1000;
+        var unixtime=(new Date(nat).getTime())/1000;
         return unixtime;
     }
 http.createServer(app).listen(port);
